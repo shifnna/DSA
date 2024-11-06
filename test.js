@@ -64,7 +64,7 @@
 // console.log(array); // Output: [1, 2, 4, 2, 1, 3, 3, 3, 3]
 
 
-                                                          //& linked list add , delete , insert
+                                 //& linked list add , delete , insert
 
 // class Node {
 //     constructor(data) {
@@ -72,6 +72,7 @@
 //         this.next = null;  // Pointer to the next node
 //     }
 // }
+
 
 // class LinkedList {
 //     constructor() {
@@ -86,7 +87,7 @@
 //         if (this.head === null) {  // If the list is empty
 //             this.head = newNode;
 //             this.tail = newNode;
-//         } else {  // If the list already has elements
+//         } else {                   // If the list already has elements
 //             this.tail.next = newNode;  // Link the last node to the new node
 //             this.tail = newNode;  // Update the tail to the new node
 //         }
