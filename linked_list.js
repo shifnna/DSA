@@ -598,3 +598,54 @@
 // console.log('list afterr removing duplicates');
 // list.removeDuplicates();
 // list.display();
+
+
+// Find Center of the list
+
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     findMiddle(){
+//          let slow=this.head;
+//          let fast=this.head;
+
+//          while (fast!==null && fast.next!==null) {
+//             slow=slow.next;
+//             fast=fast.next.next;
+//          }
+//         console.log('middle is:',slow.data);
+//     }
+
+// }
+
+// const list = new linkedList();
+// list.add(10);
+// list.add(20);
+// list.add(20);
+// list.add(30);
+// list.add(40);
+// list.add(40);
+// list.add(40);
+
+// list.findMiddle();
