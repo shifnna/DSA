@@ -485,52 +485,116 @@
 
 // Detect if there is a loop in a linkedList
 
-class Node {
-    constructor(data) {
-        this.data=data;
-        this.next=null
-    }
-}
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null
+//     }
+// }
 
-class LinkedList {
-    constructor() {
-        this.head=null;
-        this.tail=null;
-    }
+// class LinkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null;
+//     }
 
-    add(data){
-        const newNode = new Node(data);
-        if (this.head==null) {
-            this.head=newNode;
-            this.tail=newNode;
-        }else{
-            this.tail.next=newNode;
-            this.tail=newNode;
-        }
-    }
+//     add(data){
+//         const newNode = new Node(data);
+//         if (this.head==null) {
+//             this.head=newNode;
+//             this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
 
-    hasLoop() {
-        let slow = this.head;
-        let fast = this.head;
+//     hasLoop() {
+//         let slow = this.head;
+//         let fast = this.head;
 
-        while (fast !== null && fast.next !== null) {
-            slow = slow.next;          
-            fast = fast.next.next;     
+//         while (fast !== null && fast.next !== null) {
+//             slow = slow.next;          
+//             fast = fast.next.next;     
 
-            if (slow === fast) {     // the fast is running faster than slow, so, when the slow and fast reach in the same node only it  will return true.    
-                return true;        //and only when it works in a cycle loop they will meet at a same node together. 
-            }                      //(it is not checking the data same or not, it checks if they are in the same node eppozhenkilum ee cycle il karangi nadakkumbo) 
-        }
+//             if (slow === fast) {     // the fast is running faster than slow, so, when the slow and fast reach in the same node only it  will return true.    
+//                 return true;        //and only when it works in a cycle loop they will meet at a same node together. 
+//             }                      //(it is not checking the data same or not, it checks if they are in the same node eppozhenkilum ee cycle il karangi nadakkumbo) 
+//         }
         
-        return false;                    
-    }
+//         return false;                    
+//     }
 
-}
+// }
 
-let list = new LinkedList();
-list.add(10);
-list.add(30);
-list.add(50);
-list.tail.next=list.head.next;  //If you make the last node's next point to any previous node (instead of null), 
-console.log(list.hasLoop());   //it creates a loop (cycle).This means the list doesn't have an end and goes in circles.
+// let list = new LinkedList();
+// list.add(10);
+// list.add(30);
+// list.add(50);
+// list.tail.next=list.head.next;  //If you make the last node's next point to any previous node (instead of null), 
+// console.log(list.hasLoop());   //it creates a loop (cycle).This means the list doesn't have an end and goes in circles.
 
+
+
+// Remove Duplicates from a sorted list
+
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     removeDuplicates(){
+//         let current=this.head;
+//         while (current && current.next) {
+//             if(current.data==current.next.data){
+//                 current.next=current.next.next;
+//             }else{
+//                 current=current.next;
+//             }
+//         }
+//     }
+
+//     display(){
+//        let current=this.head;
+//         while (current!==null) {
+//             console.log(current.data);
+//             current=current.next;
+//         }
+//     }
+// }
+
+// const list = new linkedList();
+// list.add(10);
+// list.add(20);
+// list.add(20);
+// list.add(30);
+// list.add(40);
+// list.add(40);
+// list.add(40);
+// list.add(40);
+
+// console.log('original list');
+// list.display();
+
+// console.log('list afterr removing duplicates');
+// list.removeDuplicates();
+// list.display();
