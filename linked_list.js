@@ -776,54 +776,312 @@
 // find Maximum 
 
 
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     findMax(){
+//         if (this.head === null) {
+//             console.log("The list is empty.");
+//             return null;
+//         }
+    
+//         let current=this.head;
+//         let max=current.data;
+        
+//         while(current){
+//             if (current.data > max) {
+//                 max = current.data;
+//             }
+//             current = current.next;
+//         }
+//         return max;
+
+//     }
+
+// }
+
+// const list = new linkedList();
+// list.add(40);
+// list.add(10);
+// list.add(20);
+
+// console.log('max:',list.findMax());
+
+
+
+
+// array to linkedlist
+
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     fromArray(arr){
+//         for(let one of arr){
+//             this.add(one);
+//         }
+//     }
+    
+//     display(){
+//         let current=this.head;
+//        while (current!==null) {
+//          console.log(current.data);
+//          current=current.next;
+//         }
+//      }
+
+// }
+
+// const list = new linkedList();
+// const arr=[1,2,3,4,5];
+// list.fromArray(arr);
+// list.display();
+
+
+
+// Remove Duplicates (method-1)
+
+
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     removeDuplicates(){
+//         let current=this.head;
+//         let previous=null;
+//         let seen = new Set();
+
+//         while (current) {
+//             if(seen.has(current.data)){
+//                 previous.next=current.next;
+//             }else{
+//                 seen.add(current.data);
+//                 previous=current;
+//             }
+//             current=current.next;
+//         }
+//     }
+    
+//     display(){
+//         let current=this.head;
+//        while (current!==null) {
+//          console.log(current.data);
+//          current=current.next;
+//         }
+//      }
+
+// }
+
+// const list = new linkedList();
+// list.add(10);
+// list.add(20);
+// list.add(10);
+// list.add(20);
+// list.add(10);
+// list.add(20);
+// list.add(10);
+// list.add(20);
+
+// list.removeDuplicates()
+// list.display();
+
+
+
+// Remove Duplicates (method-2)
+
+
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     removeDuplicates(){
+//         let current=this.head;
+//         while (current) {
+//             let runner = current;
+//             while (runner.next) {
+//                 if(current.data===runner.next.data){
+//                     runner.next = runner.next.next;
+//                 }else{
+//                     runner=runner.next;
+//                 }
+//             }
+//             current=current.next;
+//         }
+//     }
+    
+//     display(){
+//         let current=this.head;
+//        while (current!==null) {
+//          console.log(current.data);
+//          current=current.next;
+//         }
+//      }
+
+// }
+
+// const list = new linkedList();
+// list.add(10);
+// list.add(20);
+// list.add(10);
+// list.add(20);
+// list.add(10);
+// list.add(20);
+// list.add(10);
+// list.add(20);
+
+// list.removeDuplicates()
+// list.display();
+
+
+
+
+//^^^ Doubly linked list
+
+
+// Reverse the Doubly linkedList
+
+
 class Node {
     constructor(data) {
         this.data=data;
         this.next=null;
+        this.previous=null;
     }
 }
 
-class linkedList {
+class LinkedList {
     constructor() {
         this.head=null;
-        this.tail=null
+        this.tail=null;
     }
 
     add(data){
-        const newNode=new Node(data)
-        if(this.head==null){
-           this.head=newNode;
-           this.tail=newNode;
+        const newNode = new Node(data);
+        if (this.head==null) {
+            this.head=newNode;
+            this.tail=newNode;
         }else{
             this.tail.next=newNode;
+            newNode.previous=this.tail;
             this.tail=newNode;
         }
     }
 
-    findMax(){
-        if (this.head === null) {
-            console.log("The list is empty.");
-            return null;
-        }
-    
-        let current=this.head;
-        let max=current.data;
-        
-        while(current){
-            if (current.data > max) {
-                max = current.data;
-            }
-            current = current.next;
-        }
-        return max;
+    reverse(){
+        let current = this.head;
+        let temp = null;
 
+        while (current) {
+            temp = current.previous;
+            current.previous = current.next;
+            current.next = temp;
+            current = current.previous; 
+        }
+        // if (temp !== null) {
+            this.head = temp.previous;
+        // }
     }
 
+    display(){
+       let current=this.head;
+        while (current!==null) {
+            console.log(current.data);
+            current=current.next;
+        }
+    }
 }
 
-const list = new linkedList();
-list.add(40);
+let list = new LinkedList();
 list.add(10);
 list.add(20);
+list.add(30);
+list.add(40);
+list.add(50);
 
-console.log('max:',list.findMax());
+console.log('Original List');
+list.display();
+
+console.log('Reversed List');
+list.reverse();
+list.display();
