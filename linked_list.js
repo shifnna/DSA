@@ -719,6 +719,62 @@
 // Find minimum value
 
 
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     findMin(){
+//         if (this.head === null) {
+//             console.log("The list is empty.");
+//             return null;
+//         }
+    
+//         let current=this.head;
+//         let min=current.data;
+        
+//         while(current){
+//             if (current.data < min) {
+//                 min = current.data;
+//             }
+//             current = current.next;
+//         }
+//         return min;
+
+//     }
+
+// }
+
+// const list = new linkedList();
+// list.add(40);
+// list.add(10);
+// list.add(20);
+
+// console.log('min:',list.findMin());
+
+
+
+// find Maximum 
+
 
 class Node {
     constructor(data) {
@@ -744,22 +800,22 @@ class linkedList {
         }
     }
 
-    findMin(){
+    findMax(){
         if (this.head === null) {
             console.log("The list is empty.");
             return null;
         }
     
         let current=this.head;
-        let min=current.data;
+        let max=current.data;
         
         while(current){
-            if (current.data < min) {
-                min = current.data;
+            if (current.data > max) {
+                max = current.data;
             }
             current = current.next;
         }
-        return min;
+        return max;
 
     }
 
@@ -770,5 +826,4 @@ list.add(40);
 list.add(10);
 list.add(20);
 
-console.log('min:',list.findMin());
-
+console.log('max:',list.findMax());
