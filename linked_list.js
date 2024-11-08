@@ -649,3 +649,126 @@
 // list.add(40);
 
 // list.findMiddle();
+
+
+
+// Is Palindrome checking
+
+// class Node {
+//     constructor(data) {
+//         this.data=data;
+//         this.next=null;
+//     }
+// }
+
+// class linkedList {
+//     constructor() {
+//         this.head=null;
+//         this.tail=null
+//     }
+
+//     add(data){
+//         const newNode=new Node(data)
+//         if(this.head==null){
+//            this.head=newNode;
+//            this.tail=newNode;
+//         }else{
+//             this.tail.next=newNode;
+//             this.tail=newNode;
+//         }
+//     }
+
+//     isPalindrome() {
+//         let values = [];
+//         let current = this.head;
+    
+//         // Step 1: Copy all values to an array
+//         while (current) {
+//             values.push(current.data);
+//             current = current.next;
+//         }
+    
+//         // Step 2: Check if the array is a palindrome
+//         let left = 0;
+//         let right = values.length - 1;
+//         while (left < right) {
+//             if (values[left] !== values[right]) {
+//                 return false;
+//             }
+//             left++;
+//             right--;
+//         }
+    
+//         return true;
+//     }
+
+// }
+
+// const list = new linkedList();
+// list.add(40);
+// list.add(10);
+// list.add(30);
+// list.add(30);
+// list.add(10);
+// list.add(40);
+
+// console.log('is palindrome?:',list.isPalindrome());
+
+
+ 
+// Find minimum value
+
+
+
+class Node {
+    constructor(data) {
+        this.data=data;
+        this.next=null;
+    }
+}
+
+class linkedList {
+    constructor() {
+        this.head=null;
+        this.tail=null
+    }
+
+    add(data){
+        const newNode=new Node(data)
+        if(this.head==null){
+           this.head=newNode;
+           this.tail=newNode;
+        }else{
+            this.tail.next=newNode;
+            this.tail=newNode;
+        }
+    }
+
+    findMin(){
+        if (this.head === null) {
+            console.log("The list is empty.");
+            return null;
+        }
+    
+        let current=this.head;
+        let min=current.data;
+        
+        while(current){
+            if (current.data < min) {
+                min = current.data;
+            }
+            current = current.next;
+        }
+        return min;
+
+    }
+
+}
+
+const list = new linkedList();
+list.add(40);
+list.add(10);
+list.add(20);
+
+console.log('min:',list.findMin());
+
