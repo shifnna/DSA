@@ -50,3 +50,4 @@ class Stack {
 
 // Uses a top pointer to track the most recent node.
 // Push and pop operations are efficient (O(1)).
+// https://youtu.be/-0ZIresFUZI?si=XokaJuw2BdWdpjlA 

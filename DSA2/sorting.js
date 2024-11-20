@@ -1,4 +1,3 @@
-
 // //^^^ Bubble Sort problem
 
 // function bubbleSort(arr){   //the largest (or smallest) will bubbles up to the end then ,
