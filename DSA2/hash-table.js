@@ -127,53 +127,67 @@
 
 
 // //^^^ Sum of Digits
-
-// class HashTable {
-//     constructor(size) {
+// class hashTable{
+//     constructor(size){
 //         this.table = new Array(size);
+//         this.size=size;
 //     }
 
-//     // Hash function to calculate index
-//     hash(key) {
-//         return key % this.table.length;
-//     }
-
-//     // Insert key-value pair (digit-frequency)
-//     set(key) {
-//         const index = this.hash(key);
-//         if (!this.table[index]) {
-//             this.table[index] = 0;
+//     hash(key){
+//         let total = 0;
+//         for(let i=0;i<key.length;i++){
+//             total += key.charCodeAt(i);
 //         }
-//         this.table[index] += 1; // increment the frequency of the digit
+//         return total % this.size;
 //     }
 
-//     // Get the sum of frequencies (or values)
-//     sum() {
-//         return this.table.reduce((acc, curr) => acc + (curr || 0), 0);
+//     set(key,value){
+//         let index = this.hash(key);
+//         let bucket = this.table[index];
+
+//         if(!bucket){
+//             this.table[index] = [[key,value]]
+//         }else{
+//             let sameKey = bucket.find(item=>item[0]===key)
+//             if(sameKey){
+//                 sameKey[1] = value
+//             }else{
+//                 bucket.push([[key,value]]);
+//             }
+//         }
+//     }
+
+//     display(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(this.table[i]);               
+//             }
+//         }
 //     }
 // }
 
-// // Example function to sum the digits of a number
-// function sumOfDigits(num) {
-//     const hashTable = new HashTable(10); // Array of size 10 (for digits 0-9)
-//     let sum = 0;
-    
-//     // Iterate through each digit of the number
-//     while (num > 0) {
-//         const digit = num % 10;
-//         sum += digit;  // Add to sum
-//         hashTable.set(digit);  // Store digit in hash table (keeping track of frequency)
-//         num = Math.floor(num / 10);  // Remove the last digit
+
+// function sumOfDigits(num){
+//     let sum=0;
+//     while (num>0) {
+//         let digit = num%10;
+//         sum += digit;
+//         num = Math.floor(num/10);
 //     }
-    
-//     console.log("Sum of digits:", sum);  // This is the final sum of digits
-//     console.log("Digit Frequencies:", hashTable.table); // This shows the frequency of each digit (optional)
+//     return sum;
 // }
 
-// sumOfDigits(1234);  // Output: Sum of digits: 10, Digit Frequencies: [ 0, 1, 1, 1, 1, 0, 0, 0, 0, 0 ]
+
+//  const table = new hashTable(30);
+//  const num = 12345
+
+//  table.set(num.toString(),sumOfDigits(num))
+
+//  table.display();
 
 
 // //^^^ Collision handling using open address (linear probing)
+
 
 // class HashTable {
 //     constructor(size) {
@@ -181,7 +195,6 @@
 //       this.size = size;
 //     }
   
-//     // Hash function to calculate index based on key
 //     hash(key) {
 //       let total = 0;
 //       for (let i = 0; i < key.length; i++) {
@@ -190,110 +203,163 @@
 //       return total % this.size;
 //     }
   
-//     // Insert key-value pair
 //     set(key, value) {
 //       let index = this.hash(key);
-  
-//       // Linear probing: if the index is occupied, check the next slot
 //       while (this.table[index] !== undefined) {
-//         // If the same key exists, update its value
 //         if (this.table[index].key === key) {
 //           this.table[index].value = value;
 //           return;
 //         }
-  
-//         // If the slot is occupied, move to the next index (linear probing)
 //         index = (index + 1) % this.size;
 //       }
-  
-//       // If the index is empty, insert the key-value pair
 //       this.table[index] = { key, value };
 //     }
   
-//     // Retrieve value by key
 //     get(key) {
 //       let index = this.hash(key);
-  
-//       // Linear probing: look for the key
-//       while (this.table[index] !== undefined) {
+//       while (this.table[index] !== undefined) {    
 //         if (this.table[index].key === key) {
 //           return this.table[index].value;
 //         }
-  
-//         // Move to the next index
-//         index = (index + 1) % this.size;
+//         index = (index + 1) % this.size;      // set ilum ee index il vekkan kazhiyathath kond next index il okke ayirikkum vechittundaakuka.
 //       }
-  
-//       return 'Key not found';  // If key is not found
+//       return 'Key not found';         
 //     }
   
-//     // Remove key-value pair
 //     remove(key) {
 //       let index = this.hash(key);
-  
-//       // Linear probing: look for the key
 //       while (this.table[index] !== undefined) {
 //         if (this.table[index].key === key) {
-//           // Set the slot to undefined to remove the entry
 //           this.table[index] = undefined;
 //           return;
 //         }
-  
-//         // Move to the next index
 //         index = (index + 1) % this.size;
 //       }
-  
-//       return 'Key not found';  // If key is not found
+//       return 'Key not found';
 //     }
   
-//     // Display the hash table
 //     display() {
 //       console.log(this.table);
 //     }
 //   }
   
-//   // Example Usage:
 //   let hashTable = new HashTable(5);
   
 //   hashTable.set('name', 'John');
 //   hashTable.set('city', 'New York');
-  
-//   // Adding a key that causes a collision
-//   hashTable.set('ram', 'India');  // Will collide with 'name'
+//   hashTable.set('ram', 'India');
     
 //   hashTable.remove('age');
-//   console.log(hashTable.get('age'));   // Key not found
+//   console.log(hashTable.get('ram'));
   
-//   hashTable.display(); // Displays the current state of the hash table
+//   hashTable.display();
+ 
 
+// //^^^ Collision handling using open address (quadratic probing)
+
+// class HashTable {
+//     constructor(size) {
+//       this.table = new Array(size);
+//       this.size = size;
+//     }
   
+//     hash(key) {
+//       let total = 0;
+//       for (let i = 0; i < key.length; i++) {
+//         total += key.charCodeAt(i);
+//       }
+//       return total % this.size;
+//     }
+  
+//     set(key, value) {
+//       let index = this.hash(key);
+//       let i = 0;
+      
+//       while (this.table[index] !== undefined && this.table[index].key !== key) {
+//         i++;
+//         index = (index + i * i) % this.size; // Quadratic probing
+//       }
+      
+//       this.table[index] = { key, value };
+//     }
+  
+//     get(key) {
+//       let index = this.hash(key);
+//       let i = 0;
+      
+//       while (this.table[index] !== undefined) {
+//         if (this.table[index].key === key) {
+//           return this.table[index].value;
+//         }
+//         i++;
+//         index = (index + i * i) % this.size; // Quadratic probing
+//       }
+//       return 'Key not found';
+//     }
+  
+//     remove(key) {
+//       let index = this.hash(key);
+//       let i = 0;
+      
+//       while (this.table[index] !== undefined) {
+//         if (this.table[index].key === key) {
+//           this.table[index] = undefined;
+//           return;
+//         }
+//         i++;
+//         index = (index + i * i) % this.size; // Quadratic probing
+//       }
+//       return 'Key not found';
+//     }
+  
+//     display() {
+//       console.log(this.table);
+//     }
+//   }
+  
+//   let hashTable = new HashTable(5);
+  
+//   hashTable.set('name', 'John');
+//   hashTable.set('city', 'New York');
+//   hashTable.set('ram', 'India');
+    
+//   hashTable.remove('age');
+//   console.log(hashTable.get('age'));
+  
+//   hashTable.display();
+
+
 
 // //^^^  Check if Two Arrays Are Equal
 
-// function areArraysEqual(arr1, arr2) {
-//     if (arr1.length !== arr2.length) return false;
-    
-//     const hashTable = {};
+// function areArraysEqual(arr1,arr2) {
+//     let hashTable = {};
+//     if(arr1.length!==arr2.length) return false;
 
-//     // Count frequency of elements in arr1
-//     for (let num of arr1) {
-//         hashTable[num] = (hashTable[num] || 0) + 1;
+//     for(let i=0;i<arr1.length;i++){
+//         let key=arr1[i];
+//         hashTable[key] ? hashTable[key]++ : hashTable[key]=1;            
 //     }
 
-//     // Check if elements of arr2 match
-//     for (let num of arr2) {
-//         if (!hashTable[num]) return false;
-//         hashTable[num]--;
+//     for(let i=0;i<arr2.length;i++){
+//         let key = arr2[i];
+//         if(!hashTable[key] && hashTable[key]!==0){
+//             return false;
+//         }else{
+//             hashTable[key]--;
+//         }
+//     }
+
+//     for(let key in hashTable){
+//         if(hashTable[key]!==0) return false;
 //     }
 
 //     return true;
 // }
 
-// let arr1 = [1, 2, 3, 4];
-// let arr2 = [4, 3, 2, 1];
-
-// areArraysEqual(arr1, arr2); // Returns true
-
+// let array3 = [1, 2, 2, 4];
+// let array4 = [4, 2, 2, 1];
+// console.log(areArraysEqual(array3, array4));
 
 
 // //^^^  Count Distinct Elements in an Array
