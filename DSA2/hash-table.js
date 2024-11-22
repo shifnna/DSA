@@ -127,6 +127,7 @@
 
 
 // //^^^ Sum of Digits
+
 // class hashTable{
 //     constructor(size){
 //         this.table = new Array(size);
@@ -205,7 +206,7 @@
   
 //     set(key, value) {
 //       let index = this.hash(key);
-//       while (this.table[index] !== undefined) {
+//       while (this.table[index]) {
 //         if (this.table[index].key === key) {
 //           this.table[index].value = value;
 //           return;
@@ -217,7 +218,7 @@
   
 //     get(key) {
 //       let index = this.hash(key);
-//       while (this.table[index] !== undefined) {    
+//       while (this.table[index]) {    
 //         if (this.table[index].key === key) {
 //           return this.table[index].value;
 //         }
@@ -228,7 +229,7 @@
   
 //     remove(key) {
 //       let index = this.hash(key);
-//       while (this.table[index] !== undefined) {
+//       while (this.table[index]) {
 //         if (this.table[index].key === key) {
 //           this.table[index] = undefined;
 //           return;
@@ -335,12 +336,12 @@
 // function areArraysEqual(arr1,arr2) {
 //     let hashTable = {};
 //     if(arr1.length!==arr2.length) return false;
-
+//     //add frequencies
 //     for(let i=0;i<arr1.length;i++){
 //         let key=arr1[i];
 //         hashTable[key] ? hashTable[key]++ : hashTable[key]=1;            
 //     }
-
+//     //reducing frequencies in hashtable if that value exists in arr2
 //     for(let i=0;i<arr2.length;i++){
 //         let key = arr2[i];
 //         if(!hashTable[key] && hashTable[key]!==0){
@@ -349,7 +350,7 @@
 //             hashTable[key]--;
 //         }
 //     }
-
+//     //check if any of them value not zero
 //     for(let key in hashTable){
 //         if(hashTable[key]!==0) return false;
 //     }
@@ -401,3 +402,29 @@
 // findDuplicates(arr); // Returns [1, 3, 5]
 
 
+// //^^^ Return unique values
+
+// function uniqueValues(arr) {
+//     let hashTable = {};
+//     let unique = [];
+    
+//     for (let i = 0; i < arr.length; i++) {
+//         if (hashTable[arr[i]]) {
+//             hashTable[arr[i]]++;
+//         } else {
+//             hashTable[arr[i]] = 1;
+//         }
+//     }
+
+//     for (let key in hashTable) {
+//         if (hashTable[key] === 1) {
+//             unique.push(Number(key)); // Convert key back to a number
+//         }
+//     }
+
+//     return unique;
+// }
+
+// let arr = [1, 2, 3, 4, 5, 1, 3, 5];
+// console.log(uniqueValues(arr)); 
+// // Returns [2, 4]

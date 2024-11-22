@@ -1,104 +1,130 @@
-class Stack {
-    constructor() {
-      this.top = null; // The top of the stack
-      this.size = 0;   // Tracks the size of the stack
-    }
+//^^^ stack in linkedlist
+
+// class Node {
+//   constructor(value) {
+//       this.value = value;
+//       this.next = null;
+//   }
+// }
+
+// class Stack {
+//     constructor() {
+//       this.top = null;
+//       this.size = 0; 
+//     }
   
-    // Add an element to the stack
-    push(value) {
-      const newNode = new Node(value);
-      newNode.next = this.top; // Link the new node to the current top
-      this.top = newNode;      // Update the top pointer
-      this.size++;
-    }
+//     push(value) {
+//       const newNode = new Node(value);
+//       newNode.next = this.top;
+//       this.top = newNode;  
+//       this.size++;
+//     }
   
-    // Remove and return the top element of the stack
-    pop() {
-      if (this.isEmpty()) {
-        return "Stack is empty";
-      }
-      const poppedValue = this.top.value;
-      this.top = this.top.next; // Update the top pointer
-      this.size--;
-      return poppedValue;
-    }
+//     pop() {
+//       if (this.isEmpty()) {
+//         return "Stack is empty";
+//       }
+//       const poppedValue = this.top.value;
+//       this.top = this.top.next; 
+//       this.size--;
+//       return poppedValue;
+//     }
   
-    // View the top element without removing it
-    peek() {
-      if (this.isEmpty()) {
-        return "Stack is empty";
-      }
-      return this.top.value;
-    }
+//     peek() {
+//       if (this.isEmpty()) {
+//         return "Stack is empty";
+//       }
+//       return this.top.value;
+//     }
   
-    // Check if the stack is empty
-    isEmpty() {
-      return this.size === 0;
-    }
-  }
+//     isEmpty() {
+//       return this.size === 0;
+//     }
+//   }
   
-  // Example Usage
-  const stack = new Stack();
-  stack.push(10);
-  stack.push(20);
-  console.log(stack.peek()); // 20
-  console.log(stack.pop());  // 20
-  console.log(stack.isEmpty()); // false
+//   const stack = new Stack();
+//   stack.push(10);
+//   stack.push(20);
+//   console.log(stack.peek()); // 20
+//   console.log(stack.pop());  // 20
+//   console.log(stack.isEmpty()); // false
   
   
 //   Stack:
-
 // Uses a top pointer to track the most recent node.
 // Push and pop operations are efficient (O(1)).
 // https://youtu.be/-0ZIresFUZI?si=XokaJuw2BdWdpjlA 
 
 
-// //^^^ Reverse a stack
+//^^^ Reverse & Sort a stack
 
-// class Stack {
-//   constructor() {
-//       this.stack = [];
+// class Stack{
+//   constructor(){
+//       this.stack=[];
+//   }
+//   isEmpty(){
+//       return this.stack.length===0
 //   }
 
-//   // Push an item onto the stack
-//   push(item) {
-//       this.stack.push(item);
+//   push(element){
+
+//       this.stack.push(element);
+
 //   }
 
-//   // Pop an item from the stack
-//   pop() {
-//       return this.stack.pop();
-//   }
 
-//   // Peek the top item of the stack
-//   peek() {
-//       return this.stack[this.stack.length - 1];
-//   }
+//   pop(){
 
-//   // Reverse the stack using recursion
-//   reverse() {
-//       if (this.stack.length === 0) {
+//       if(this.isEmpty()){
+//           console.log("stack is empty");
 //           return;
-//       }
-//       const item = this.pop();
-//       this.reverse();
-//       this.insertAtBottom(item);
-//   }
-
-//   // Helper function to insert an element at the bottom of the stack
-//   insertAtBottom(item) {
-//       if (this.stack.length === 0) {
-//           this.push(item);
-//       } else {
-//           const top = this.pop();
-//           this.insertAtBottom(item);
-//           this.push(top);
+//       }else{
+//         return  this.stack.pop()
 //       }
 //   }
 
-//   // Display the stack
-//   display() {
-//       console.log(this.stack);
+
+//   peek(){
+//       if(this.isEmpty()){
+//           console.log("stack is empty");
+//           return 
+//       }else{
+//         return this.stack[this.stack.length-1]
+          
+//       }
+//   }
+    
+// reverse() {
+//     if (this.stack.length === 0) {
+//         return;
+//     }
+//     const temp = this.stack.shift();
+//     this.reverse();
+//     this.push(temp);
+// }
+
+// sort(){
+//   if(this.isEmpty()){
+//       return;
+//   }else{
+//       let temp=this.pop();
+//       this.sort();
+//       this.sortInsert(temp);
+//   }
+// }
+// sortInsert(temp){
+//   if(this.isEmpty()||this.peek()<temp){
+//       this.stack.push(temp)
+      
+//   }else{
+//        let newTemp=this.stack.pop();
+//       this.sortInsert(temp);
+//       this.stack.push(newTemp);
+//   }
+// }
+
+//   display(){
+//       console.log(this.stack.join(" "));
 //   }
 // }
 
@@ -126,12 +152,10 @@ class Stack {
 //       this.stack = [];
 //   }
 
-//   // Push an item onto the stack
 //   push(item) {
 //       this.stack.push(item);
 //   }
 
-//   // Pop an item from the stack
 //   pop() {
 //       return this.stack.pop();
 //   }
@@ -150,7 +174,6 @@ class Stack {
 //       return this.stack[slow];
 //   }
 
-//   // Display the stack
 //   display() {
 //       console.log(this.stack);
 //   }
@@ -194,32 +217,28 @@ class Stack {
 //   return stack.length === 0;
 // }
 
-// // Test cases
-// console.log(isValidParentheses("()"));       // true
-// console.log(isValidParentheses("()()"));     // true
-// console.log(isValidParentheses("(())"));     // true
-// console.log(isValidParentheses("(()"));      // false
-// console.log(isValidParentheses("())"));      // false
-// console.log(isValidParentheses("(()())"));   // true
-// console.log(isValidParentheses("()(()))"));  // false
+// // // Test cases
+// // console.log(isValidParentheses("()"));       // true
+// // console.log(isValidParentheses("()()"));     // true
+// // console.log(isValidParentheses("(())"));     // true
+// // console.log(isValidParentheses("(()"));      // false
+// // console.log(isValidParentheses("())"));      // false
+// // console.log(isValidParentheses("(()())"));   // true
+// // console.log(isValidParentheses("()(()))"));  // false
 
 
 
 // //^^^ Reverse a string using stack 
 
 // function reverseString(str) {
-//   // Create an empty stack (array in JavaScript)
 //   let stack = [];
-  
-//   // Push each character of the string onto the stack
+
 //   for (let i = 0; i < str.length; i++) {
 //       stack.push(str[i]);
 //   }
   
-//   // Initialize an empty string to store the reversed string
 //   let reversedStr = '';
   
-//   // Pop characters off the stack and build the reversed string
 //   while (stack.length > 0) {
 //       reversedStr += stack.pop();
 //   }
@@ -228,6 +247,6 @@ class Stack {
 // }
 
 // // Test cases
-// console.log(reverseString("hello"));  // Output: "olleh"
-// console.log(reverseString("world"));  // Output: "dlrow"
-// console.log(reverseString("abcde"));  // Output: "edcba"
+// console.log(reverseString("world")); 
+// console.log(reverseString("abcde"));
+// console.log(reverseString([1,2,3,4,5])); 
