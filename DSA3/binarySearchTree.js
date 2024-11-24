@@ -1,3 +1,14 @@
+//^^^ All basic functions are included here 
+// *insert
+// *searchpreOrder
+// *postOrder
+// *inOrder
+// *levelOrder
+// *min
+// *max
+// *delete
+// *isEmpty
+
 class Node{
     constructor(value){
         this.value = value;
@@ -38,7 +49,48 @@ class BinarySearchTree {
                 this.insertNode(root.right,newNode);
             }
         }
-    } 
+    }
+
+    search(root,value){
+        if(!root){
+            return false;
+        }else{
+            if(root.value === value){
+                return true;
+            }else if(value<root.value){
+               return this.search(root.left,value); //why this return is needed?
+            }else{
+               return this.search(root.right,value);
+            }
+        }
+    }
+
+    preOrder(root){
+        if(!root){
+            return;
+        }
+        console.log(root.value);
+        this.preOrder(root.left);
+        this.preOrder(root.right);
+    }
+
+    inOrder(root){
+        if(!root){
+            return;
+        }
+        this.inOrder(root.left);
+        console.log(root.value);
+        this.inOrder(root.right);
+    }
+
+    postOrder(root){
+        if(!root){
+            return;
+        }
+        this.postOrder(root.left);
+        this.postOrder(root.right);
+        console.log(root.value);
+    }
 
     levelOrder(){
         const queue = [];
@@ -56,6 +108,23 @@ class BinarySearchTree {
         }
     }
 
+    min(root){
+        if(!root.left){
+            return root.value;
+        }else{
+           return this.min(root.left); //why this return is required here?
+        }
+    }
+
+    max(root){
+        if(!root.right){
+            return root.value;
+        }else{
+           return this.min(root.right); //why this return is required here?
+        }
+    }
+
+    
     getSuccessor(root) {
         root = root.right;
         while (root !== null && root.left !== null) {
@@ -89,7 +158,6 @@ class BinarySearchTree {
         }
         return root;
     }
-
 }
 
 const bst = new BinarySearchTree();
@@ -97,10 +165,26 @@ bst.insert(10)
 bst.insert(5)
 bst.insert(15)
 bst.insert(3)
+bst.insert(7)
 
+console.log('isEmpty',bst.isEmpty());
+console.log(bst.search(bst.root,10));
+
+console.log('preOrder:');
+bst.preOrder(bst.root);
+
+console.log('inOrder:');
+bst.inOrder(bst.root);
+
+console.log('postOrder:');
+bst.postOrder(bst.root);
+//display
 console.log('levelOrder:');
 bst.levelOrder();
 
+console.log('min value is:',bst.min(bst.root));
+console.log('max value is:',bst.max(bst.root));
+//delete
 bst.delNode(bst.root,10);
 
 console.log('levelOrder:');
