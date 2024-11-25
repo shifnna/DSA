@@ -58,7 +58,7 @@ class BinarySearchTree {
             if(root.value === value){
                 return true;
             }else if(value<root.value){
-               return this.search(root.left,value); //why this return is needed?
+               return this.search(root.left,value); 
             }else{
                return this.search(root.right,value);
             }
@@ -112,7 +112,7 @@ class BinarySearchTree {
         if(!root.left){
             return root.value;
         }else{
-           return this.min(root.left); //why this return is required here?
+           return this.min(root.left); 
         }
     }
 
@@ -120,7 +120,7 @@ class BinarySearchTree {
         if(!root.right){
             return root.value;
         }else{
-           return this.min(root.right); //why this return is required here?
+           return this.min(root.right); 
         }
     }
 
