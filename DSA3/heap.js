@@ -1,113 +1,6 @@
 // //^^^ Heap basic implimentation (Min & Max included)
 
-// class Heap {
-//     constructor(type = 'min') {
-//         this.data = []; // Array to hold the heap
-//         this.type = type; // 'min' for Min-Heap, 'max' for Max-Heap
-//     }
-
-//     // Get the index of parent and children
-//     getParentIndex(index) {
-//         return Math.floor((index - 1) / 2);
-//     }
-//     getLeftChildIndex(index) {
-//         return 2 * index + 1;
-//     }
-//     getRightChildIndex(index) {
-//         return 2 * index + 2;
-//     }
-
-//     // Swap helper
-//     swap(index1, index2) {
-//         [this.data[index1], this.data[index2]] = [this.data[index2], this.data[index1]];
-//     }
-
-//     // Compare two elements based on heap type
-//     compare(a, b) {
-//         if (this.type === 'min') {
-//             return this.data[a] < this.data[b];
-//         } else {
-//             return this.data[a] > this.data[b];
-//         }
-//     }
-
-//     // Insert a value into the heap
-//     insert(value) {
-//         this.data.push(value); // Add the value at the end
-//         this.heapifyUp(); // Fix the heap
-//     }
-
-//     // Remove and return the root (min or max)
-//     removeRoot() {
-//         if (this.data.length === 0) return null;
-//         if (this.data.length === 1) return this.data.pop();
-
-//         const root = this.data[0];
-//         this.data[0] = this.data.pop(); // Replace root with the last element
-//         this.heapifyDown(); // Fix the heap
-//         return root;
-//     }
-
-//     // Heapify up to maintain the heap property after insertion
-//     heapifyUp() {
-//         let index = this.data.length - 1;
-//         while (index > 0) {
-//             const parentIndex = this.getParentIndex(index);
-//             if (this.compare(index, parentIndex)) {
-//                 this.swap(index, parentIndex);
-//                 index = parentIndex;
-//             } else {
-//                 break;
-//             }
-//         }
-//     }
-
-//     // Heapify down to maintain the heap property after deletion
-//     heapifyDown() {
-//         let index = 0;
-//         const length = this.data.length;
-
-//         while (true) {
-//             const leftChildIndex = this.getLeftChildIndex(index);
-//             const rightChildIndex = this.getRightChildIndex(index);
-//             let swapIndex = index;
-
-//             if (leftChildIndex < length && this.compare(leftChildIndex, swapIndex)) {
-//                 swapIndex = leftChildIndex;
-//             }
-//             if (rightChildIndex < length && this.compare(rightChildIndex, swapIndex)) {
-//                 swapIndex = rightChildIndex;
-//             }
-
-//             if (swapIndex === index) break;
-
-//             this.swap(index, swapIndex);
-//             index = swapIndex;
-//         }
-//     }
-
-//     // View the current state of the heap
-//     printHeap() {
-//         console.log(this.data);
-//     }
-// }
-
-// const maxHeap = new Heap('max');  //* just change here , when you want max Heap
-// maxHeap.insert(10);
-// maxHeap.insert(20);
-// maxHeap.insert(5);
-// maxHeap.insert(7);
-// maxHeap.insert(2);
-
-// console.log("Max-Heap:");
-// maxHeap.printHeap();
-
-// console.log("Removed root:", maxHeap.removeRoot());
-// maxHeap.printHeap();
-
-
-
-// //^^^ Min heap only
+//^^^ Min heap
 
 // class MinHeap {
 //     constructor() {
@@ -155,16 +48,17 @@
 //         return root;
 //     }
 
-//     heapifyDown() {
+//    heapifyDown() {
 //         let index = 0;
 //         while (this.leftChildIndex(index) < this.heap.length) {
-//             let smallerChildIndex = this.leftChildIndex(index);
-//             if (
-//                 this.rightChildIndex(index) < this.heap.length &&
-//                 this.heap[this.rightChildIndex(index)] < this.heap[smallerChildIndex]
-//             ) {
-//                 smallerChildIndex = this.rightChildIndex(index);
-//             }
+//             let smallerChildIndex = this.leftChildIndex(index);                        //s
+//             if (                                                                       //m
+//                 this.rightChildIndex(index) < this.heap.length &&                      //a
+//                 this.heap[this.rightChildIndex(index)] < this.heap[smallerChildIndex]  //l        find smaller left/right
+//             ) {                                                                        //l
+//                 smallerChildIndex = this.rightChildIndex(index);                       //e 
+//             }                                                                          //r
+                                                                                 
 //             if (this.heap[index] <= this.heap[smallerChildIndex]) break;
 
 //             // Swap if the child is smaller
@@ -189,7 +83,7 @@
 
 
 
-// //^^^ max heap only
+//^^^ max heap
 
 // class MaxHeap {
 //     constructor() {
