@@ -161,3 +161,33 @@
 // console.log(maxHeap.heap); // Output: [30, 20, 5, 10]
 // console.log(maxHeap.remove()); // Output: 30 (largest element)
 // console.log(maxHeap.heap); // Output: [20, 10, 5]
+
+
+// ^^^ heap Sorting
+
+function heapSort(arr){
+    let n = arr.length
+    for(let i = Math.floor(n-1/2);i>=0;i--){
+        heapifyUp(arr,n,i)
+    }
+      for(let i = n-1;i>=1;i--){
+        [arr[0],arr[i]] = [arr[i],arr[0]]
+        heapifyUp(arr,i,0)
+      }
+  }
+  
+  function heapifyUp(arr,n,i){
+    let large = i
+    let l = 2 * i + 1
+    let r = 2 * i + 2 
+    if(l<n && arr[l]>arr[large]) large = l
+    if(r<n && arr[r]>arr[large]) large = r
+    if(i!==large)
+    {
+      [arr[i],arr[large]] = [arr[large],arr[i]]
+      heapifyUp(arr,n,large)
+    }
+  }
+  let arr = [5,9,3,7,8,1]
+heapSort(arr)
+console.log(arr)

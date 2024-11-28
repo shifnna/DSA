@@ -168,23 +168,23 @@
 
 // //^^^ Selection sort (position changing)
 
-// function selectionSort(arr){
-//     for(let i=0;i<arr.length-1;i++){
-//         let minPosition = i;
+function selectionSort(arr){
+    for(let i=0;i<arr.length-1;i++){
+        let minPosition = i;
 
-//         for(let j=i+1;j<arr.length;j++){
-//             if(arr[minPosition]>arr[j]){
-//                 minPosition = j;
-//             }
-//         }
+        for(let j=i+1;j<arr.length;j++){
+            if(arr[minPosition]>arr[j]){
+                minPosition = j;
+            }
+        }
 
-//         let temp = arr[i];
-//         arr[i] = arr[minPosition];
-//         arr[minPosition] = temp;
+        let temp = arr[i];
+        arr[i] = arr[minPosition];
+        arr[minPosition] = temp;
 
-//     }
-//     return arr;
-// }
+    }
+    return arr;
+}
 
-// let arr = [8, 20, -2, 4, -6];
-// console.log(selectionSort(arr));
+let arr = [8, 20, -2, 4, -6];
+console.log(selectionSort(arr));
