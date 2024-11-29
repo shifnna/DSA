@@ -65,6 +65,7 @@ class BinarySearchTree {
         }
     }
 
+    //3 types of DFS traversals
     preOrder(root){
         if(!root){
             return;
@@ -92,7 +93,7 @@ class BinarySearchTree {
         console.log(root.value);
     }
 
-    levelOrder(){
+    BFS(){
         const queue = [];
         queue.push(this.root);
 
@@ -180,7 +181,7 @@ console.log('postOrder:');
 bst.postOrder(bst.root);
 //display
 console.log('levelOrder:');
-bst.levelOrder();
+bst.BFS();
 
 console.log('min value is:',bst.min(bst.root));
 console.log('max value is:',bst.max(bst.root));
@@ -188,4 +189,4 @@ console.log('max value is:',bst.max(bst.root));
 bst.delNode(bst.root,10);
 
 console.log('levelOrder:');
-bst.levelOrder();
+bst.BFS();

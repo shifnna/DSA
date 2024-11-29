@@ -17,7 +17,7 @@ class trie{
 
         for(let d of data){
             if(!node.child[d]){
-                node.child[d] = new TrieNode()   //node nte ullil oru child[d] undaakkunnu then athinte ullil oru new node undakkunnu
+                node.child[d] = new TrieNode()   //node nte ullil oru child[d] undaakkunnu then athinte ullil oru newNode undakkunnu
             }
             node = node.child[d]
         }
@@ -74,7 +74,6 @@ class trie{
         let words = []
         this.dfs(node,data,words)
         return words
-
     }
 
     dfs(node,data,words){
@@ -128,3 +127,12 @@ console.log(triee.prefix("shif"))
 console.log(triee.search("hanna"))
 console.log(triee.search("safa"))
 console.log(triee.autoCompletion("sa"))
+
+
+
+
+// There are three cases when deleting a word from Trie.
+
+// 1.The deleted word is a prefix of other words in Trie.
+// 2.The deleted word shares a common prefix with other words in Trie.
+// 3.The deleted word does not share any common prefix with other words in Trie.
